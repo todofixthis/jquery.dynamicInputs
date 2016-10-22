@@ -20,6 +20,22 @@ This plugin requires [jQuery Core](https://jquery.com/) and
 
 For a demo of this plugin in action, see `demo.html`.
 
+# Options
+
+- `add` (Boolean, optional): whether to add an input immediately after
+  configuring the widget.
+  - Set this to `false` if you want to wire up event handlers first!
+- `template` (jQuery, required): the element that will be cloned to add
+  new inputs.
+
+# Methods
+
+- `$('...').dynamicInputs('add', position)` - add a new input.  Numeric
+  `position` argument specifies what the new input's position should be
+  once it is added.  Omit to add the new input to the end.
+- `$('...').dynamicInputs('remove', position)` - removes the input at
+  position `position`.
+
 # Event Handlers
 
 Use event handlers to perform additional functions when an element is
