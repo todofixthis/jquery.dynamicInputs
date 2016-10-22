@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link
+        crossorigin="anonymous"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        rel="stylesheet">
+
+    <link
+        crossorigin="anonymous"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        rel="stylesheet">
+
+    <style>
+      div.panel {
+        left: 50%;
+        max-height: 80%;
+        overflow-y: auto;
+        position: fixed;
+        top: 50%;
+        /* :see: http://stackoverflow.com/a/25829529/ */
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Dynamic Inputs Example</h2>
+        </div>
+
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label class="control-label">
+                What are your favorite animals?
+              </label>
+
+              <!-- This will be where new rows get inserted. -->
+              <div id="container"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contains a template for each new row. -->
+      <div id="template-container" class="hidden">
+        <div class="form-group">
+          <input name="animals[]" class="form-input" type="text">
+
+          <!-- Clicking on this button will remove the row. -->
+          <button class="btn btn-danger" data-di-fn="remove">
+            <span class="glyphicon glyphicon-minus-sign"></span>
+          </button>
+          &nbsp;
+          <!-- Clicking on this button will insert a new row. -->
+          <button class="btn btn-success" data-di-fn="add">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="jquery.dynamic-inputs.js"></script>
+
+    <script>
+      (function($) {
+        $(function() {
+          'use strict';
+
+          $('#container').dynamicInputs({
+            template: $('#template-container').children(':first')
+          })
+        });
+      })(jQuery);
+    </script>
+  </body>
+</html>
